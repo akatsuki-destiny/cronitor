@@ -14,6 +14,7 @@ func ResetLoginAttemptCounts() {
 	result := db.Exec("UPDATE users SET login_attempt_count = 0 WHERE login_attempt_count > 0")
 	if result.Error != nil {
 		log.Default().Println("Error while resetting login attempt counts:", result.Error)
+		return
 	}
 
 	log.Default().Println("Login attempt counts reset.")
