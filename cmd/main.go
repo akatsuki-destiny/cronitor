@@ -16,7 +16,7 @@ func main() {
 	c := cron.New()
 
 	// Add reset login attempt counts cron job
-	_, err := c.AddFunc("0 */2 * * *", scripts.ResetLoginAttemptCounts)
+	_, err := c.AddFunc("*/15 * * * *", scripts.ResetLoginAttemptCounts)
 	utils.FatalErr("Error while adding cron job", err)
 
 	c.Start()
