@@ -15,3 +15,10 @@ type User struct {
 	CreatedAt         time.Time `json:"created_at" gorm:"autoCreateTime"`
 	UpdatedAt         time.Time `json:"updated_at" gorm:"autoUpdateTime"`
 }
+
+type Verification struct {
+	Id                   uint64    `json:"id" gorm:"primaryKey;autoIncrement"`
+	UserID               uint64    `json:"user_id" gorm:"references:users(id);not null"`
+	VerificationCodeHash string    `json:"verification_code_hash" gorm:"not null"`
+	CreatedAt            time.Time `json:"created_at" gorm:"autoCreateTime"`
+}
